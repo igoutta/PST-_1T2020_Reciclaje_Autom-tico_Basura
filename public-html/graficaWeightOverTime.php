@@ -95,6 +95,8 @@
             </style>
 
             <script language="javascript">
+                // En esta ocasión se usa la función getJSON para obtener los datos en formato JSON
+                // y se crea la gráfica a partir de ello 
                 Highcharts.getJSON('dataWeightOverTime.php',
                     function (data) {
 

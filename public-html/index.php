@@ -6,6 +6,7 @@ include("conexion.php");
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<!-- Título de la pestaña -->
 <title>Grupo 8: Reciclaje Automatizado</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
@@ -35,9 +36,11 @@ include("conexion.php");
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <!-- Nombre de inicio -->
         <a class="navbar-brand" href="#">Grupo 8</a> </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
+          <!-- Cinta lateral -->
           <li class="active"><a href="#banner">Inicio</a></li>
           <li><a href="#features">Información</a></li>
           <li><a href="#work">Gráficas</a></li>
@@ -68,6 +71,7 @@ include("conexion.php");
   <div class="container">
     <div class="row">
 
+      <!-- Se crea de forma iterativa las tablas para mostrar los resultados -->
       <?php
         for($i=1; $i<=3; $i++) {
       ?>
@@ -96,7 +100,9 @@ include("conexion.php");
               <td id="peso<?php echo $i; echo $j;?>"></td>
               <td id="lleno<?php echo $i; echo $j;?>"></td>
             </tr>
-
+            
+            <!-- Se crear para actualizar los resultados, falta refinar los resultados, 
+            pues sólo se muestran al inicio debido al modo de construcción -->
             <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
             <script type="text/javascript">
               var auto_refresh = setInterval(
@@ -140,6 +146,7 @@ include("conexion.php");
       <div class="col-lg-10 col-lg-offset-1 text-center text">
         <h3>Gráficas</h3>
         <div class="row">
+          <!-- Contenedor con los enlaces de las gráficas e imagenes representativas de las gráficas --> 
           <div class="col-md-6 col-sm-6">
             <p>Información por Tipo de Objeto</p>
             <div class="portfolio-item"> <a href="graficaInfo.php"> <img class="img-portfolio img-responsive" src="images/grafica_info.jpg" alt=""> </a> </div>
@@ -157,7 +164,6 @@ include("conexion.php");
             <div class="portfolio-item"> <a href="graficaUseHours.php"> <img class="img-portfolio img-responsive" src="images/grafica_usehours.jpg" alt=""> </a> </div>
           </div>
         </div>
-        <!-- /.row (nested) --> 
         <div class="col-md-6 col-sm-6 center">
           <p>Línea Temporal de Peso</p>
           <div class="portfolio-item"> <a href="graficaWeightOverTime.php"> <img class="img-portfolio img-responsive" src="images/grafica_weightovertime.jpg" alt=""> </a> </div>

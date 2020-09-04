@@ -52,18 +52,27 @@
       </div>
       <div class="col-md-6">
           <h4>Cantidad de Objetos Reciclados por Tipo</h4>
+          <!--- /. Contenedor sobre el cual se va a construir la gráfica -->
           <canvas id="myChart"></canvas>
           <br>
-
+  
+          <!-- /. Se obtiene el recurso fuente (o líbrería) con el cual crearemos las gráficas correspondientes -->
           <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          <!-- /. Se crea el script, se obtiene el elemento del sitio web y se crea la gráfica -->
           <script>
             var ctx = document.getElementById('myChart').getContext('2d');
             var chart = new Chart(ctx, {
+                // Se elige el tipo de gráfica
                 type: 'pie',
                 data: {
+                    // Se crean los datos que iran dentro de la gráfica en un dataset.
+                    // Dentro los datos se obtiene de la variable cantidad, mientras que
+                    // los nombres de las etiquetas se obtienen de la variable tipos
+                    // debido al archivo PHP incluido y se lo ingresan en formato JSON.
                     datasets: [{
                       label: 'Cantidad Total de Objetos Reciclados',
                       backgroundColor: ['rgb(2,23,44)','rgb(255,192,128)'],
+                      // Es necesario configurar como nulo el tamaño del borde
                       borderWidth: null,
                       data: <?php echo json_encode($cantidad)?>
                     }],
@@ -88,19 +97,20 @@
                   datasets: [{
                     label: 'Peso Total de Objetos Reciclados',
                     backgroundColor: ["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)"],
-                    //
                     borderWidth: null,
+                    // En este caso se elige el a la variable peso 
                     data: <?php echo json_encode($peso)?>
                   }],
                   labels: <?php echo json_encode($tipos)?>
                 },
+
               options: {responsive: true}
           });
         </script>
   
       </div>
       <div class="col-lg-10 col-lg-offset-1 text-center text">
-        <!-- /.row (nested) --> 
+        <!-- /. Se crear un botón para regresar al inicio --> 
         <a href="index.php" class="view-more">Regresar</a> </div>
       </div>
   </div>

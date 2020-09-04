@@ -49,10 +49,12 @@
         </div>
         <br>
         <div class="col-md-12">
+            <!-- Se llaman a las librerías necesarias para crear dos gráficas sincronizadas -->
             <script src="https://code.highcharts.com/highcharts.js"></script>
             <script src="https://code.highcharts.com/modules/data.js"></script>
 
             <figure class="highcharts-figure">
+                <!--  /.Contenedor para las gráficas -->
                 <div id="container"></div>
             </figure>
 
@@ -100,6 +102,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1" />
 
             <script language="javascript">
+                // Función que sirve para sincronizar el mouse con los cursores de ambas gráficas
                 ['mousemove', 'touchmove', 'touchstart'].forEach(function (eventType) {
                     document.getElementById('container').addEventListener(
                         eventType,
@@ -165,6 +168,10 @@
                     }
                 }
 
+                // Uso de variable data que contiene los datos 
+                // en un mapa JSON que contiene los datos para crear las gráficas
+                // Nótese que la variable dias tiene una opción para el formato JSON
+                // la cual le otorga la facultad de pasar tildes sin problemas.
                 var data = {"xData": <?php echo json_encode($dias, JSON_UNESCAPED_UNICODE)?>,
                     "datasets":[
                     {
@@ -182,9 +189,10 @@
                     }]
                 };
 
+                // Se usa los datasets dentro de la variable anterior para crear cada gráfica
                 data.datasets.forEach(function (dataset, i) {
 
-                    // Add X values
+                    // Añadir los valores de X
                     dataset.data = Highcharts.map(dataset.data, function (val, j) {
                         return [data.xData[j], val];
                     });
@@ -195,7 +203,7 @@
 
                     Highcharts.chart(chartDiv, {
                         chart: {
-                            marginLeft: 40, // Keep all charts left aligned
+                            marginLeft: 40, // Alinea todas las gráficas
                             spacingTop: 20,
                             spacingBottom: 20
                         },
@@ -212,7 +220,7 @@
                             enabled: false
                         },
                         xAxis: {
-                            categories: data.xData,
+                            categories: data.xData, //Es imprescindible inscribir los datos dentro de categorias para una presentación adecuada
                             crosshair: true,
                             events: {
                                 setExtremes: syncExtremes
@@ -259,7 +267,7 @@
             </script>
             <div class="col-lg-10 col-lg-offset-1 text-center text">
 
-        <!-- /.row (nested) --> 
+        <!-- /. Uso de botón para regresar --> 
         <a href="index.php" class="view-more">Regresar</a> </div>
         </div>
     </div>

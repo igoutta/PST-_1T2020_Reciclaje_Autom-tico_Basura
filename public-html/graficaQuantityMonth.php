@@ -44,6 +44,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
+      <!-- /. Se llamar a las librerías necesarias para gráficar y realizar mas acciones.
+      Se han escogido estas gráficas debido a su versatilidad y su enfoque en este campo -->
         <script src="https://code.highcharts.com/highcharts.js"></script>
         <script src="https://code.highcharts.com/modules/exporting.js"></script>
         <script src="https://code.highcharts.com/modules/export-data.js"></script>
@@ -55,6 +57,7 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+        <!-- /. Para facilitar la construcción de estilos, se lo crea dentro de este archivo -->
         <style style="text/css">
           .highcharts-figure, .highcharts-data-table table {
             min-width: 360px; 
@@ -95,7 +98,8 @@
             background: #f1f7ff;
           }
         </style>
-
+        
+        <!-- /. Se utiliza el maquetado de HTML para indicar el uso de Javascript dentro -->
         <script language="javascript">
 
           Highcharts.chart('container', {
@@ -118,6 +122,9 @@
 
           },
 
+          // Al ser una libreía diferente usamos ejes y se usa el esquema de categorias
+          // para introducir los nombres de los valores a analizar, en formato JSON
+          // En este caso usamos la variable meses 
           xAxis: {
 
             categories: <?php echo json_encode($meses)?>
@@ -150,6 +157,9 @@
 
           },
 
+          // Dentro de las series se introducen los valores a ser graficados
+          // En este caso usamos la variable cuenta para el Papel y 
+          // la variable cuenta para el Metal
           series: [{
 
             name: 'Papel',
@@ -169,7 +179,7 @@
         </script>
         <div class="col-lg-10 col-lg-offset-1 text-center text">
 
-        <!-- /.row (nested) --> 
+        <!-- /. Se crea un botón para regresar al inicio --> 
         <a href="index.php" class="view-more">Regresar</a> </div>
       </div>
     </div>
